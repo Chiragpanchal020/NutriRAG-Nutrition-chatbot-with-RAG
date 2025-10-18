@@ -1,0 +1,7 @@
+pymupdf
+tiktoken
+supabase
+openai
+tqdm
+python-dotenv
+regex
