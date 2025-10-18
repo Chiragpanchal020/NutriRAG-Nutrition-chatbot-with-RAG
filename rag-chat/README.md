@@ -2,6 +2,12 @@
 
 This is the Next.js frontend for the NutriRAG Nutrition Chatbot. It provides a user-friendly chat interface for interacting with the RAG backend.
 
+## Architecture
+
+The following diagram illustrates the architecture of the NutriRAG chatbot:
+
+![Architecture Diagram](./assets/architecture.svg)
+
 ## Tech Stack
 
 -   [Next.js](https://nextjs.org/) - React framework for building user interfaces.
@@ -9,11 +15,6 @@ This is the Next.js frontend for the NutriRAG Nutrition Chatbot. It provides a u
 -   [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
 -   [TypeScript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript.
 
-## Architecture
-
-The following diagram illustrates the architecture of the NutriRAG chatbot:
-
-![Architecture Diagram](./public/assets/architecture.svg)
 ## Getting Started
 
 ### Prerequisites

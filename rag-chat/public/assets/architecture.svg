@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="400" viewBox="-0.5 -0.5 800 400">
-    <defs/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="450" viewBox="-0.5 -0.5 800 450">
+    <defs>
+        <!-- Arrowhead Definition - moved to top -->
+        <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/>
+        </marker>
+    </defs>
     <g>
         <!-- Main Rectangle -->
-        <rect x="0" y="0" width="800" height="400" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+        <rect x="0" y="0" width="800" height="450" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
         
         <!-- Title -->
         <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#111827">NutriRAG Chatbot Architecture</text>
@@ -45,53 +50,73 @@
         
         <!-- Arrows -->
         <g id="arrows" fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)">
-            <path d="M 170 180 h 50"/>
-            <path d="M 340 180 h 60"/>
-            <path d="M 520 180 c 40 0, 60 -40, 100 -60"/> <!-- API to OpenAI -->
-            <path d="M 520 180 c 40 0, 60 40, 100 60"/>  <!-- API to Supabase -->
-            <path d="M 740 120 c -60 0, -100 40, -160 60"/> <!-- OpenAI to API -->
-            <path d="M 740 240 c -60 0, -100 -40, -160 -60"/><!-- Supabase to API -->
+            <!-- User to Frontend -->
+            <path d="M 170 180 L 220 180"/>
+            <!-- Frontend to API -->
+            <path d="M 340 180 L 400 180"/>
+            <!-- API to OpenAI -->
+            <path d="M 520 170 Q 570 150 620 120"/>
+            <!-- API to Supabase -->
+            <path d="M 520 190 Q 570 210 620 240"/>
         </g>
         
-        <!-- Arrowhead Definition -->
-        <defs>
-            <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/>
-            </marker>
-        </defs>
+        <!-- Return arrows (different style to show bidirectional flow) -->
+        <g id="return-arrows" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arrowhead)">
+            <!-- OpenAI back to API -->
+            <path d="M 620 130 Q 570 160 520 180"/>
+            <!-- Supabase back to API -->
+            <path d="M 620 230 Q 570 200 520 180"/>
+            <!-- API back to Frontend -->
+            <path d="M 400 190 L 340 190"/>
+            <!-- Frontend back to User -->
+            <path d="M 220 190 L 170 190"/>
+        </g>
         
         <!-- Data Flow Labels -->
         <g font-family="Arial" font-size="12" fill="#4b5563">
-            <text x="175" y="170">Query</text>
-            <text x="345" y="170">Request</text>
-            <text x="560" y="125">Embed & Generate</text>
-            <text x="560" y="245">Similarity Search</text>
-            <text x="580" y="200">Response & Context</text>
+            <text x="185" y="175" text-anchor="middle">Query</text>
+            <text x="370" y="175" text-anchor="middle">Request</text>
+            <text x="525" y="125">Embed &amp;</text>
+            <text x="525" y="140">Generate</text>
+            <text x="525" y="225">Similarity</text>
+            <text x="525" y="235">Search</text>
+            <text x="599" y="195" text-anchor="middle">Response</text>
         </g>
 
         <!-- Ingestion Flow -->
-        <g transform="translate(0, 280)">
+        <g transform="translate(0, 330)">
             <text x="400" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#111827">Data Ingestion (ingest.py)</text>
-                <g transform="translate(150, 50)">
-                    <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
-                    <text x="50" y="30" text-anchor="middle" font-size="12">PDF Doc</text>
-                </g>
-                <g transform="translate(300, 50)">
-                    <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
-                    <text x="50" y="30" text-anchor="middle" font-size="12">OpenAI</text>
-                </g>
-                <g transform="translate(450, 50)">
-                    <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
-                    <text x="50" y="30" text-anchor="middle" font-size="12">Supabase</text>
-                </g>
-
-            <g fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)">
-                <path d="M 250 75 h 50"/>
-                <path d="M 400 75 h 50"/>
+            
+            <!-- PDF Document -->
+            <g transform="translate(150, 50)">
+                <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+                <text x="50" y="30" text-anchor="middle" font-size="12" fill="#0c4a6e">PDF Doc</text>
             </g>
-             <g font-family="Arial" font-size="12" fill="#4b5563">
-                <text x="255" y="65">Chunk & Embed</text>
-                <text x="405" y="65">Store Vectors</text>
+            
+            <!-- OpenAI Embeddings -->
+            <g transform="translate(300, 50)">
+                <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+                <text x="50" y="30" text-anchor="middle" font-size="12" fill="#581c87">OpenAI</text>
+            </g>
+            
+            <!-- Supabase Storage -->
+            <g transform="translate(450, 50)">
+                <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+                <text x="50" y="30" text-anchor="middle" font-size="12" fill="#92400e">Supabase</text>
+            </g>
+
+            <!-- Ingestion arrows -->
+            <g fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)">
+                <path d="M 250 75 L 300 75"/>
+                <path d="M 400 75 L 450 75"/>
+            </g>
+            
+            <!-- Ingestion labels -->
+            <g font-family="Arial" font-size="11" fill="#4b5563">
+                <text x="275" y="67" text-anchor="middle">Chunk &amp;</text>
+                <text x="275" y="90" text-anchor="middle">Embed</text>
+                <text x="425" y="67" text-anchor="middle">Store</text>
+                <text x="425" y="90" text-anchor="middle">Vectors</text>
             </g>
         </g>
     </g>

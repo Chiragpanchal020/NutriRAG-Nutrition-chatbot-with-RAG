@@ -1,6 +1,13 @@
 # NutriRAG Nutrition Chatbot
 
-This project is a Retrieval Augmented Generation (RAG) based chatbot that answers questions about human nutrition. It uses a PDF on human nutrition as its knowledge base. The backend is built with Python, using LangChain, OpenAI for embeddings, and Supabase for the vector store. The frontend is a chat interface built with Next.js and Tailwind CSS.
+This project is a Retrieval Augmented Generation (RAG) based chatbot that answers questions about human nutrition. It uses a PDF on human nutrition as its knowledge base. The backend is built with Python, OpenAI for embeddings, and Supabase for the vector store. The frontend is a chat interface built with Next.js and Tailwind CSS.
+
+
+## Architecture
+
+The following diagram illustrates the architecture of the NutriRAG chatbot:
+
+![Architecture Diagram](./rag-chat/public/assets/architecture.svg)
 
 ## Project Structure
 
@@ -9,11 +16,6 @@ This project is a Retrieval Augmented Generation (RAG) based chatbot that answer
 -   `rag-chat/`: This directory contains the Next.js frontend for the chatbot.
 -   `requirements.txt`: The Python dependencies for this project.
 
-## Architecture
-
-The following diagram illustrates the architecture of the NutriRAG chatbot:
-
-![Architecture Diagram](./rag-chat/public/assets/architecture.svg)
 ## How it works
 
 1.  **Data Ingestion**: The `ingest.py` script reads the `Human-Nutrition-text.pdf`, splits it into smaller chunks, and generates vector embeddings for each chunk using OpenAI's API. These embeddings are then stored in a Supabase Postgres database with the `pgvector` extension.
