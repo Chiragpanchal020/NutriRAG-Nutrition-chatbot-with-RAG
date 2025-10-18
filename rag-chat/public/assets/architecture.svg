@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="400" viewBox="-0.5 -0.5 800 400">
+    <defs/>
+    <g>
+        <!-- Main Rectangle -->
+        <rect x="0" y="0" width="800" height="400" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+        
+        <!-- Title -->
+        <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#111827">NutriRAG Chatbot Architecture</text>
+        
+        <!-- Components -->
+        <g id="components">
+            <!-- User -->
+            <g transform="translate(50, 150)">
+                <rect x="0" y="0" width="120" height="60" rx="8" ry="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+                <text x="60" y="35" font-family="Arial" font-size="14" text-anchor="middle" fill="#1e40af">User</text>
+            </g>
+            
+            <!-- Frontend -->
+            <g transform="translate(220, 150)">
+                <rect x="0" y="0" width="120" height="60" rx="8" ry="8" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1"/>
+                <text x="60" y="35" font-family="Arial" font-size="14" text-anchor="middle" fill="#065f46">Next.js App</text>
+            </g>
+            
+            <!-- API Route -->
+            <g transform="translate(400, 150)">
+                <rect x="0" y="0" width="120" height="60" rx="8" ry="8" fill="#fee2e2" stroke="#fca5a5" stroke-width="1"/>
+                <text x="60" y="35" font-family="Arial" font-size="14" text-anchor="middle" fill="#991b1b">API Route</text>
+            </g>
+            
+            <!-- OpenAI -->
+            <g transform="translate(620, 80)">
+                <rect x="0" y="0" width="120" height="60" rx="8" ry="8" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+                <text x="60" y="35" font-family="Arial" font-size="14" text-anchor="middle" fill="#581c87">OpenAI API</text>
+            </g>
+            
+            <!-- Supabase -->
+            <g transform="translate(620, 220)">
+                <rect x="0" y="0" width="120" height="60" rx="8" ry="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+                <text x="60" y="25" font-family="Arial" font-size="14" text-anchor="middle" fill="#92400e">Supabase</text>
+                <text x="60" y="45" font-family="Arial" font-size="12" text-anchor="middle" fill="#92400e">(pgvector)</text>
+            </g>
+        </g>
+        
+        <!-- Arrows -->
+        <g id="arrows" fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)">
+            <path d="M 170 180 h 50"/>
+            <path d="M 340 180 h 60"/>
+            <path d="M 520 180 c 40 0, 60 -40, 100 -60"/> <!-- API to OpenAI -->
+            <path d="M 520 180 c 40 0, 60 40, 100 60"/>  <!-- API to Supabase -->
+            <path d="M 740 120 c -60 0, -100 40, -160 60"/> <!-- OpenAI to API -->
+            <path d="M 740 240 c -60 0, -100 -40, -160 -60"/><!-- Supabase to API -->
+        </g>
+        
+        <!-- Arrowhead Definition -->
+        <defs>
+            <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/>
+            </marker>
+        </defs>
+        
+        <!-- Data Flow Labels -->
+        <g font-family="Arial" font-size="12" fill="#4b5563">
+            <text x="175" y="170">Query</text>
+            <text x="345" y="170">Request</text>
+            <text x="560" y="125">Embed & Generate</text>
+            <text x="560" y="245">Similarity Search</text>
+            <text x="580" y="200">Response & Context</text>
+        </g>
+
+        <!-- Ingestion Flow -->
+        <g transform="translate(0, 280)">
+            <text x="400" y="20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#111827">Data Ingestion (ingest.py)</text>
+                <g transform="translate(150, 50)">
+                    <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
+                    <text x="50" y="30" text-anchor="middle" font-size="12">PDF Doc</text>
+                </g>
+                <g transform="translate(300, 50)">
+                    <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+                    <text x="50" y="30" text-anchor="middle" font-size="12">OpenAI</text>
+                </g>
+                <g transform="translate(450, 50)">
+                    <rect x="0" y="0" width="100" height="50" rx="8" ry="8" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+                    <text x="50" y="30" text-anchor="middle" font-size="12">Supabase</text>
+                </g>
+
+            <g fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)">
+                <path d="M 250 75 h 50"/>
+                <path d="M 400 75 h 50"/>
+            </g>
+             <g font-family="Arial" font-size="12" fill="#4b5563">
+                <text x="255" y="65">Chunk & Embed</text>
+                <text x="405" y="65">Store Vectors</text>
+            </g>
+        </g>
+    </g>
+</svg>
