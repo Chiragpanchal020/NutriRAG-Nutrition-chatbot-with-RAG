@@ -6,8 +6,8 @@ This project is a Retrieval Augmented Generation (RAG) based chatbot that answer
 
 Here are some screenshots of the application:
 
-![Screenshot 1](.\rag-chat\public\Homepage_NutriRAG.png)
-![Screenshot 2](.\rag-chat\public\Chat-Interface.png)
+![Screenshot 1](./rag-chat/public/Homepage_NutriRAG.png)
+![Screenshot 2](./rag-chat/public/Chat-Interface.png)
 
 
 ## Architecture
