@@ -17,7 +17,8 @@ EMBED_MODEL = "text-embedding-3-small"  #1536 dim vectors
 TOP_K = 3
 
 queries = [
-    "How does saliva help with digestion?",
+    "What are the six classes of nutrients essential for the human body?",
+    "How does saliva help with digestion?"
 ]
 
 def main():

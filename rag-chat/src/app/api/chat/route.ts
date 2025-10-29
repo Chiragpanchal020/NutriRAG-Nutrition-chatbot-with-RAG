@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     const queryEmbedding = await embedQuery(message);
     const { data: chunks, error } = await supabase.rpc("match_documents", {
       query_embedding: queryEmbedding,
-      match_count: 8,
+      match_count: 15,  // Increased from 8 to get more potential matches
       filter: { source: "Human-Nutrition-text.pdf" },
     });
 
