@@ -1,6 +1,6 @@
 # NutriRAG:Nutrition Chatbot with RAG
 
-This intelligent chatbot leverages Retrieval Augmented Generation (RAG) technology to provide accurate, context-aware answers to nutrition-related questions. Built with state-of-the-art technologies, it combines the power of OpenAI's language models with efficient vector similarity search using HNSW indexing in Supabase.
+This project is a Retrieval Augmented Generation (RAG) based chatbot that answers questions about human nutrition. It uses a PDF on human nutrition as its knowledge base. The backend is built with Python, OpenAI for embeddings, and Supabase for the vector store. The frontend is a chat interface built with Next.js.
 
 ## Screenshots
 
